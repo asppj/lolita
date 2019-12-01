@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger_opentrace
+    restart: always
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+    networks:
+      - nginx_default
+
+networks:
+  nginx_default:
+    external: true

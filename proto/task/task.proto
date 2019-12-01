@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package task;
+
+service TaskService {
+    rpc Search (TaskRequest) returns (TaskResponse) {
+    }
+}
+
+message TaskRequest {
+    string request = 1;
+    string nameReq = 2;
+    int32 ageReq = 3;
+    string localTime = 4;
+
+}
+
+message TaskResponse {
+    string response = 1;
+    string nameRes = 2;
+    int32 ageRes = 3;
+    string localAndServerTime = 4;
+    enum Code {
+        failed = 0;
+        success = 1;
+        excepted = 2;
+    }
+    Code code = 5;
+}
