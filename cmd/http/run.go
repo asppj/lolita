@@ -7,6 +7,8 @@ import (
 	"t-mk-opentrace/cmd/http/middleware"
 	"time"
 
+	"github.com/opentracing/opentracing-go"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -35,21 +37,21 @@ func ginInitRouter() *gin.Engine {
 // GinInitServer init
 func GinInitServer() error {
 	routerHandel := ginInitRouter()
-	tracer, conn := middleware.NewOpenTraceClient()
-	defer func() {
-		if err := conn.Close(); err != nil {
-			log.Println(err)
-		}
-	}()
-	routerHandel.Use(middleware.OpenTraceMiddleware(tracer))
+	// tracer, conn := middleware.NewOpenTraceClient()
+	// defer func() {
+	// 	if err := conn.Close(); err != nil {
+	// 		log.Println(err)
+	// 	}
+	// }()
+	routerHandel.Use(middleware.OpenTraceMiddleware(opentracing.GlobalTracer()))
 	if err := RegisterRouter(routerHandel); err != nil {
 		panic(err)
 	}
 	_defaultServer = &http.Server{
 		Addr:         Host + ":" + Port,
 		Handler:      routerHandel,
-		ReadTimeout:  5 * time.Second,
-		WriteTimeout: 10 * time.Second,
+		ReadTimeout:  500 * time.Second,
+		WriteTimeout: 10000 * time.Second,
 	}
 	_defaultServer.RegisterOnShutdown(func() {
 		log.Printf("关闭http服务...%s:%s", Host, Port)

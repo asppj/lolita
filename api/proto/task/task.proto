@@ -5,6 +5,16 @@ package task;
 service TaskService {
     rpc Search (TaskRequest) returns (TaskResponse) {
     }
+    rpc PlanDetail (PlanRequest) returns (PlanResponse) {
+    }
+}
+
+message PlanRequest {
+    string PlanID = 1;
+}
+message PlanResponse {
+    string PlanID = 1;
+    int32 Code = 2;
 }
 
 message TaskRequest {

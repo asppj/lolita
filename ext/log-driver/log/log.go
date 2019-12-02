@@ -22,6 +22,9 @@ func NewLogger() *lg.Logger {
 	}
 	_loggerOnce.Do(func() {
 		_logger = lg.New()
+		_logger.WithFields(lg.Fields{
+			"project": "t-openTrace",
+		})
 	})
 	return _logger
 }
@@ -54,4 +57,9 @@ func Trace(args ...interface{}) {
 // Fatal dev
 func Fatal(args ...interface{}) {
 	NewLogger().Fatalln(args...)
+}
+
+// Error dev
+func Error(args ...interface{}) {
+	NewLogger().Errorln(args...)
 }
