@@ -3,17 +3,18 @@ package grpc
 import (
 	"log"
 	"net"
+	"t-mk-opentrace/config"
 	g "t-mk-opentrace/ext/grpc-driver/grpc"
 )
 
-// Host Host
-var Host = ""
-
-// Port Port
-var Port = "6005"
-
-// RPCAddr addr
-var RPCAddr = Host + ":" + Port
+// // Host Host
+// var Host = ""
+//
+// // Port Port
+// var Port = "16005"
+//
+// // RPCAddr addr
+// var RPCAddr = Host + ":" + Port
 
 // app defaultRPCServer
 var server *g.Server
@@ -22,7 +23,10 @@ var server *g.Server
 func RPCServer() error {
 	server = g.NewServer()
 	RegisterRPC(server)
-	host := Host
+	conf := config.Get().RPC
+	host := conf.Host
+	Port := conf.Port
+	RPCAddr := conf.Host + ":" + Port
 	lis, err := net.Listen("tcp", RPCAddr)
 	if err != nil {
 		log.Fatalf("net.Listen rpc err: %v", err)

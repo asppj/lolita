@@ -5,26 +5,26 @@ import (
 	"log"
 	"net/http"
 	"t-mk-opentrace/cmd/http/middleware"
+	"t-mk-opentrace/config"
 	"time"
-
-	"github.com/opentracing/opentracing-go"
 
 	"github.com/gin-gonic/gin"
 )
 
-var mode = "debug"
-
-// Port http端口
-var Port = "6006"
-
-// Host 地址
-var Host = ""
+// var mode = "debug"
+//
+// // Port http端口
+// var Port = "16006"
+//
+// // Host 地址
+// var Host = ""
 
 var _defaultServer *http.Server
 
 // ginInitRouter s
 func ginInitRouter() *gin.Engine {
-	gin.SetMode(mode)
+	mode := config.Get().Mode
+	gin.SetMode(string(mode))
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(gin.Logger())
@@ -43,14 +43,18 @@ func GinInitServer() error {
 	// 		log.Println(err)
 	// 	}
 	// }()
-	routerHandel.Use(middleware.OpenTraceMiddleware(opentracing.GlobalTracer()))
+	conf := config.Get().Server
+	Host := conf.Host
+	Port := conf.Port
+	routerHandel.Use(middleware.OpenTraceMiddleware())
+	routerHandel.Use(middleware.PromMiddle())
 	if err := RegisterRouter(routerHandel); err != nil {
 		panic(err)
 	}
 	_defaultServer = &http.Server{
 		Addr:         Host + ":" + Port,
 		Handler:      routerHandel,
-		ReadTimeout:  500 * time.Second,
+		ReadTimeout:  5000 * time.Second,
 		WriteTimeout: 10000 * time.Second,
 	}
 	_defaultServer.RegisterOnShutdown(func() {

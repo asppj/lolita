@@ -4,9 +4,8 @@ import (
 	"context"
 	"t-mk-opentrace/api/proto/plan"
 	"t-mk-opentrace/api/proto/task"
-	"t-mk-opentrace/ext/grpc-driver/grpc"
 	"t-mk-opentrace/ext/log-driver/log"
-	"t-mk-opentrace/services/rpc"
+	"t-mk-opentrace/pkg/plan/rpc"
 	"time"
 )
 
@@ -37,13 +36,10 @@ func (t *Tb) PlanDetail(ctx context.Context, r *task.PlanRequest) (*task.PlanRes
 			log.Warn()
 		}
 	}()
-	ct, cancel := grpc.DefaultContext()
-	defer cancel()
+	// ct, cancel := grpc.DefaultContext()
+	// defer cancel()
 	c := plan.NewServiceClient(cc)
-	resp, err := c.Search(ct, &plan.Request{
-		PlanID: r.PlanID,
-	})
-	_, _ = c.Search(ct, &plan.Request{
+	resp, err := c.Search(ctx, &plan.Request{
 		PlanID: r.PlanID,
 	})
 	if err != nil {

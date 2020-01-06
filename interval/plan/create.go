@@ -20,8 +20,7 @@ func SearchPlan(ctx *gin.Context) {
 		span = opentracing.StartSpan("sp-lsp")
 	}
 	uri := "http://localhost:6006/user"
-	c := opentracing.ContextWithSpan(context.Background(), span)
-	if err := requests.Get(c, uri, nil, nil); err != nil {
+	if err := requests.Get(ctx.Request.Context(), uri, nil, nil); err != nil {
 		log.Error(err)
 		ctx.JSON(http.StatusInternalServerError, err)
 		return
@@ -35,7 +34,7 @@ func TaskDial() (*grpc.ClientConn, error) {
 }
 
 // TestTask 测试rpc连接
-func TestTask() {
+func TestTask(ctx context.Context) {
 	cc, err := TaskDial()
 	if err != nil {
 		panic(err)
@@ -46,8 +45,8 @@ func TestTask() {
 		}
 	}()
 	c := task.NewTaskServiceClient(cc)
-	ctx, cancel := grpc.DefaultContext()
-	defer cancel()
+	// ctx, cancel := grpc.DefaultContext()
+	// defer cancel()
 	res, err := c.PlanDetail(ctx, &task.PlanRequest{
 		PlanID: "planID-test-1",
 	})

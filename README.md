@@ -1,4 +1,11 @@
-# openTrace 演进
+1. Logging - 用于记录离散的事件。例如，应用程序的调试信息或错误信息。它是我们诊断问题的依据。
+2. Metrics - 用于记录可聚合的数据。例如，队列的当前深度可被定义为一个度量值，在元素入队或出队时被更新；HTTP 请求个数可被定义为一个计数器，新请求到来时进行累加。
+3. Tracing - 用于记录请求范围内的信息。例如，一次远程方法调用的执行过程和耗时。它是我们排查系统性能问题的利器。
+
+# [opencensus(beta)](https://opencensus.io/language-support/)
+#  [OpenTelemetry(alpha)](https://opentelemetry.io/docs/golang/tracing/)
+
+# opentrace 
 1. 埋点：gin-web,http请求，grpc请求封装并埋点；
 2. 收集：zipkin,AppDash,jaeger 选择其一（阿里云日志服务优先）
 3. 展示：
@@ -88,6 +95,20 @@ defer span.Finish()
 
 ```
 
+### context 传递
+
+#### 网络方式传递
+    Extrect 从Header中提取
+    Extrect 从grpc Ctx中提取
+    inject 注入Header
+    Inject 注入grpc Ctx
+    进程中：opentracing.SpanFromContext(ctx)或span, ctx := opentracing.StartSpanFromContext(ctx, "newspan")
+    gin.Context:ctx.Request.Context()
+    - gin.Context!=context.Context!=opentracing.SpanContext
+    mongodb/redis/es:
+        -context 不再使用DefaultContext()
+        统一使用gin.request.Context()[因为携带了span]
+
 ## jaeger 搭建
 > all_in_one 镜像 tools->jaeger->docker-compose.yml
 
@@ -98,3 +119,47 @@ defer span.Finish()
 2. [opentracing翻译版](https://wu-sheng.gitbooks.io/opentracing-io/content/pages/spec.html)
 3. [grpc-opentracing中间件](https://godoc.org/github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc)
 4. [openTracing 讲解](https://github.com/yurishkuro/opentracing-tutorial)
+5. [阿里云日志服务配置aliyun-log-jaeger](https://github.com/aliyun/aliyun-log-jaeger/blob/master/README_CN.md?)
+
+# prometheus metrics 统计
+
+## prometheus 收集数据
+
+## Grafana 展示数据
+
+### prometheus 指标类型
+ 
+ 1. Counter 单调增
+ 2. Guage  可增减
+ 3. Historygram 直方图
+ 4. Summary 聚合图（1-10占比，10-20占比。。。）
+ 
+ #### gin-ext 中间件
+ 1. 启动时长-uptime
+ 2. 请求总数-http_request_count_total
+ 3. 请求延时-http_request_duration_seconds
+ 4. 请求字节-http_request_size_bytes
+ 5. 响应字节-http_response_size_bytes
+ 
+ #### kafka 驱动封装
+ 
+ ##### 消费者
+ 
+ 1. 消费延时-kafka_consumer_duration_seconds
+ 2. 消费成功数-kafka_consumer_success_total
+ 3. 消费失败数-kafka_consumer_failed_total
+ 4. Payload 字节数-kafka_consumer_payload_byte_size
+
+ ##### 生产者
+ 1. 生产延时-kafka_product_duration_seconds
+ 2. 生产成功数-kafka_product_success_total
+ 3. 生产失败数-kafka_product_failed_total
+ 4. Payload 字节数-kafka_product_payload_byte_size
+
+ 
+### 官方sdk
+* github.com/prometheus/client_golang 
+
+# 参考资料
+
+1. [prometheus介绍](https://www.imhanjm.com/2019/10/06/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3prometheus(go%20sdk)/)

@@ -12,6 +12,18 @@ import (
 	"github.com/opentracing/opentracing-go"
 )
 
+var traceStatus = false
+
+// SetTraceOpen 打开
+func SetTraceOpen() {
+	traceStatus = true
+}
+
+// SetTraceClose 关闭
+func SetTraceClose() {
+	traceStatus = false
+}
+
 // Request get
 func Request(
 	ctx context.Context,
@@ -22,9 +34,15 @@ func Request(
 	method string,
 	fnOpts ...func(r *http.Request)) error {
 	span := opentracing.SpanFromContext(ctx)
-	if span == nil {
-		span = opentracing.StartSpan(method + "-" + url)
+
+	if traceStatus {
+		if span == nil {
+			log.Warn("span is nil")
+			span = opentracing.StartSpan(method + "-" + url)
+		}
+		defer span.Finish()
 	}
+
 	httpReq, err := http.NewRequest(method, url, in)
 	if err != nil {
 		return err
@@ -34,14 +52,14 @@ func Request(
 	}
 	// Transmit the span's TraceContext as HTTP headers on our
 	// outbound request.
-	c := span.Context()
-	if err := opentracing.GlobalTracer().Inject(
-		c,
-		opentracing.HTTPHeaders,
-		opentracing.HTTPHeadersCarrier(httpReq.Header)); err != nil {
-		log.Warn(err)
+	if traceStatus {
+		if err := opentracing.GlobalTracer().Inject(
+			span.Context(),
+			opentracing.HTTPHeaders,
+			opentracing.HTTPHeadersCarrier(httpReq.Header)); err != nil {
+			log.Warn(err)
+		}
 	}
-
 	resp, err := client.Do(httpReq)
 	if err != nil {
 		return err
@@ -49,7 +67,7 @@ func Request(
 	if err := ReadJSON(resp, out); err != nil {
 		return err
 	}
-	return fmt.Errorf("必须有span")
+	return nil
 }
 
 // ReadJSON reads JSON from http.Response and parses it into `out`

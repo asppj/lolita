@@ -5,9 +5,8 @@ import (
 	"t-mk-opentrace/api/proto/plan"
 	pm "t-mk-opentrace/api/proto/plan"
 	"t-mk-opentrace/api/proto/task"
-	"t-mk-opentrace/ext/grpc-driver/grpc"
 	"t-mk-opentrace/ext/log-driver/log"
-	rpc "t-mk-opentrace/services/rpc"
+	rpc "t-mk-opentrace/pkg/plan/rpc"
 )
 
 // RPCPlan RPCPlan
@@ -25,23 +24,19 @@ func (p *RPCPlan) Search(ctx context.Context, res *plan.Request) (*plan.Response
 			log.Warn()
 		}
 	}()
-	ct, cancel := grpc.DefaultContext()
-	defer cancel()
 	c := plan.NewServiceClient(cc)
-	return c.Delete(ct, &plan.Request{
+	return c.Delete(ctx, &plan.Request{
 		PlanID: res.PlanID,
 	})
 }
 
 // Delete Search
 func (p *RPCPlan) Delete(ctx context.Context, res *plan.Request) (*plan.Response, error) {
-	_, _ = delTask(res.PlanID)
-	_, _ = delTask(res.PlanID)
-	return delTask(res.PlanID)
+	return delTask(ctx, res.PlanID)
 }
 
 // delTask delTask
-func delTask(planID string) (*plan.Response, error) {
+func delTask(ctx context.Context, planID string) (*plan.Response, error) {
 	cc, err := rpc.NewTaskDial()
 	if err != nil {
 		return nil, err
@@ -51,10 +46,8 @@ func delTask(planID string) (*plan.Response, error) {
 			log.Warn()
 		}
 	}()
-	ct, cancel := grpc.DefaultContext()
-	defer cancel()
 	c := task.NewTaskServiceClient(cc)
-	resp, err := c.Search(ct, &task.TaskRequest{
+	resp, err := c.Search(ctx, &task.TaskRequest{
 		NameReq: planID,
 	})
 	if err != nil {

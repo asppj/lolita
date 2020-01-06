@@ -5,6 +5,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/uber/jaeger-client-go"
+	"github.com/uber/jaeger-client-go/zipkin"
+
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing-contrib/go-gin/ginhttp"
 	opentracing "github.com/opentracing/opentracing-go"
@@ -12,12 +15,12 @@ import (
 
 func TestExample(t *testing.T) {
 
-	// tracer, closer := jaeger.NewTracer(
-	// 	"serviceName",
-	// 	jaeger.NewConstSampler(true),
-	// 	jaeger.NewInMemoryReporter(),
-	// )
-	tracer, closer := NewOpenTraceClient()
+	tracer, closer := jaeger.NewTracer(
+		"serviceName",
+		jaeger.NewConstSampler(true),
+		jaeger.NewInMemoryReporter(),
+	)
+	// tracer, closer := NewOpenTraceClient()
 	defer closer.Close()
 
 	fn := func(c *gin.Context) {
@@ -46,16 +49,16 @@ func TestExampleWithValues(t *testing.T) {
 	traceid := "75b353311e9ba7da"
 	parentspanid := "2eb00e948dc5066d"
 
-	// propagator := zipkin.NewZipkinB3HTTPHeaderPropagator()
-	// tracer, closer := jaeger.NewTracer(
-	// 	"serviceName",
-	// 	jaeger.NewConstSampler(true),
-	// 	jaeger.NewInMemoryReporter(),
-	// 	jaeger.TracerOptions.Injector(opentracing.HTTPHeaders, propagator),
-	// 	jaeger.TracerOptions.Extractor(opentracing.HTTPHeaders, propagator),
-	// 	jaeger.TracerOptions.ZipkinSharedRPCSpan(true),
-	// )
-	tracer, closer := NewOpenTraceClient()
+	propagator := zipkin.NewZipkinB3HTTPHeaderPropagator()
+	tracer, closer := jaeger.NewTracer(
+		"serviceName",
+		jaeger.NewConstSampler(true),
+		jaeger.NewInMemoryReporter(),
+		jaeger.TracerOptions.Injector(opentracing.HTTPHeaders, propagator),
+		jaeger.TracerOptions.Extractor(opentracing.HTTPHeaders, propagator),
+		jaeger.TracerOptions.ZipkinSharedRPCSpan(true),
+	)
+	// tracer, closer := NewOpenTraceClient()
 
 	defer closer.Close()
 

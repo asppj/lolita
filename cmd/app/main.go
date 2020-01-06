@@ -8,8 +8,17 @@ import (
 	"t-mk-opentrace/ext/log-driver/log"
 )
 
+func init() {
+	InitDBs()
+}
+
 // main main
 func main() {
+	Main()
+}
+
+// Main main
+func Main() {
 	// tracer, conn := middleware.NewOpenTraceClient()
 	_, closer := NewOpenTraceClient()
 	defer func() {

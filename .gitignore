@@ -6,7 +6,10 @@
 *.dll
 *.so
 *.dylib
-
+body.html
+config.json
+.idea
+.vscode
 # Test binary, built with `go test -c`
 *.test
 
@@ -24,7 +27,4 @@
 *.iml
 out
 gen
-.idea/.gitignore
-.idea/misc.xml
-.idea/modules.xml
-.idea/t-mk-opentrace.iml
+
