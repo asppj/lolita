@@ -116,7 +116,6 @@ func IncMetricsByProduct(payload *consumer.DefaultHandlerParam, startTime time.T
 		} else {
 			productSuccessCounter.WithLabelValues(labels...).Inc()
 		}
-		time.Now()
 		productDuration.WithLabelValues(labels...).Observe(time.Since(startTime).Seconds())
 	}
 }

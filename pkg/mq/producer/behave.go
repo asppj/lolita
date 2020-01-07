@@ -3,6 +3,8 @@ package producer
 import (
 	"fmt"
 	"sync"
+	"t-mk-opentrace/pkg/mq/metrics"
+	"time"
 
 	"t-mk-opentrace/pkg/mq/model"
 
@@ -42,10 +44,12 @@ func DefaultProducer() *KafkaProducer {
 
 // AddOne 生产report
 func AddOne(r model.Behave, companyID string, companyDB string) error {
+	startTime := time.Now()
 	cr := struct {
 		// TODO
 	}{}
 	_, _, err := DefaultProducer().ProduceOneJSON(cr)
+	metrics.IncMetricsByProduct("", startTime, err)
 	return err
 
 }
