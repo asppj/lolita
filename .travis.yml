@@ -12,5 +12,5 @@ branches:
 script:
   - go get -v
   - go test ./test
-  - go run ./main.go
+  - go build -v .
 #  - docker-compose
