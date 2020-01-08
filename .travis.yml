@@ -1,0 +1,16 @@
+language: go
+
+go:
+  - master
+sudo: required
+branches:
+  only:
+    - master
+    - tag
+#services:
+#  - docker
+script:
+  - go get -v
+  - go test
+  - go run main.go
+#  - docker-compose
