@@ -13,7 +13,6 @@ require (
 	github.com/golang/protobuf v1.3.2
 	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
-	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/olivere/elastic v6.2.26+incompatible
 	github.com/opentracing-contrib/go-gin v0.0.0-20190301172248-2e18f8b9c7d4
 	github.com/opentracing/opentracing-go v1.1.0
@@ -31,5 +30,4 @@ require (
 	go.uber.org/atomic v1.5.1 // indirect
 	google.golang.org/grpc v1.25.1
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
-	honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc // indirect
 )

@@ -21,4 +21,4 @@ services:
       MgoPwd: lsp123123
       GOPROXY: "https://goproxy.cn,direct"
     command:
-      go run main.go
+      go run app.go

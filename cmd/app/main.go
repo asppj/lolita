@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"sync"
@@ -13,12 +13,12 @@ func init() {
 	InitDBs()
 }
 
-// main main
+// app app
 func main() {
 	Main()
 }
 
-// Main main
+// Main app
 func Main() {
 	// tracer, conn := middleware.NewOpenTraceClient()
 	_, closer := NewOpenTraceClient()
