@@ -1,7 +1,7 @@
 package rpc
 
 import (
-	"github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc"
+	"github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc"
 )
 
 var addr = "192.168.253.73:6005"

@@ -4,10 +4,10 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/asppj/t-mk-opentrace/api/proto/task"
-	"github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc"
-	"github.com/asppj/t-mk-opentrace/ext/http-driver/requests"
-	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
+	"github.com/asppj/t-go-opentrace/api/proto/task"
+	"github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc"
+	"github.com/asppj/t-go-opentrace/ext/http-driver/requests"
+	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
 
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing/opentracing-go"

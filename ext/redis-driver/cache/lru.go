@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/asppj/t-mk-opentrace/ext/redis-driver/redis"
+	"github.com/asppj/t-go-opentrace/ext/redis-driver/redis"
 )
 
 // LRU lru缓存

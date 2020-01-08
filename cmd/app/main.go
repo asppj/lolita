@@ -3,10 +3,10 @@ package main
 import (
 	"sync"
 
-	"github.com/asppj/t-mk-opentrace/cmd/grpc"
-	"github.com/asppj/t-mk-opentrace/cmd/http"
-	ant "github.com/asppj/t-mk-opentrace/ext/ants-driver/ants"
-	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
+	"github.com/asppj/t-go-opentrace/cmd/grpc"
+	"github.com/asppj/t-go-opentrace/cmd/http"
+	ant "github.com/asppj/t-go-opentrace/ext/ants-driver/ants"
+	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
 )
 
 func init() {

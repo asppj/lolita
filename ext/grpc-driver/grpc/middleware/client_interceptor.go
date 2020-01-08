@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
+	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"

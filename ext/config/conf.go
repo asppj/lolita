@@ -2,7 +2,7 @@ package config
 
 import (
 	// "git.dustess.com/mk-base/es-driver/es"
-	"github.com/asppj/t-mk-opentrace/ext/constant"
+	"github.com/asppj/t-go-opentrace/ext/constant"
 	// "git.dustess.com/mk-base/redis-driver/redis"
 	"github.com/stevenroose/gonfig"
 )

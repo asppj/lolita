@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc/middleware"
+	"github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc/middleware"
 
 	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
 	"github.com/opentracing/opentracing-go"

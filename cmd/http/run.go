@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/asppj/t-mk-opentrace/cmd/http/middleware"
-	"github.com/asppj/t-mk-opentrace/config"
+	"github.com/asppj/t-go-opentrace/cmd/http/middleware"
+	"github.com/asppj/t-go-opentrace/config"
 
 	"github.com/gin-gonic/gin"
 )

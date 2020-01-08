@@ -5,8 +5,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/asppj/t-mk-opentrace/ext/http-driver/requests"
-	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
+	"github.com/asppj/t-go-opentrace/ext/http-driver/requests"
+	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"

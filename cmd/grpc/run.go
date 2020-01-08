@@ -4,8 +4,8 @@ import (
 	"log"
 	"net"
 
-	"github.com/asppj/t-mk-opentrace/config"
-	g "github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc"
+	"github.com/asppj/t-go-opentrace/config"
+	g "github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc"
 )
 
 // // Host Host
