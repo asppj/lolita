@@ -1,8 +1,8 @@
 package http
 
 import (
-	"t-mk-opentrace/cmd/http/middleware"
-	"t-mk-opentrace/interval/plan"
+	"github.com/asppj/t-mk-opentrace/cmd/http/middleware"
+	"github.com/asppj/t-mk-opentrace/interval/plan"
 
 	"github.com/gin-gonic/gin"
 )

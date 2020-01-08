@@ -1,9 +1,9 @@
 package config
 
 import (
-	ginConfig "t-mk-opentrace/ext/config"
+	ginConfig "github.com/asppj/t-mk-opentrace/ext/config"
 
-	ginConstant "t-mk-opentrace/ext/constant"
+	ginConstant "github.com/asppj/t-mk-opentrace/ext/constant"
 
 	"github.com/stevenroose/gonfig"
 )

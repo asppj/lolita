@@ -4,9 +4,10 @@ import (
 	"context"
 	"log"
 	"net/http"
-	"t-mk-opentrace/cmd/http/middleware"
-	"t-mk-opentrace/config"
 	"time"
+
+	"github.com/asppj/t-mk-opentrace/cmd/http/middleware"
+	"github.com/asppj/t-mk-opentrace/config"
 
 	"github.com/gin-gonic/gin"
 )

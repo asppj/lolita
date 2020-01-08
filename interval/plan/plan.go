@@ -2,11 +2,12 @@ package plan
 
 import (
 	"context"
-	"t-mk-opentrace/api/proto/plan"
-	pm "t-mk-opentrace/api/proto/plan"
-	"t-mk-opentrace/api/proto/task"
-	"t-mk-opentrace/ext/log-driver/log"
-	rpc "t-mk-opentrace/pkg/plan/rpc"
+
+	"github.com/asppj/t-mk-opentrace/api/proto/plan"
+	pm "github.com/asppj/t-mk-opentrace/api/proto/plan"
+	"github.com/asppj/t-mk-opentrace/api/proto/task"
+	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
+	rpc "github.com/asppj/t-mk-opentrace/pkg/plan/rpc"
 )
 
 // RPCPlan RPCPlan

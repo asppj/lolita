@@ -1,8 +1,8 @@
 package conn
 
 import (
-	"t-mk-opentrace/config"
-	mongo2 "t-mk-opentrace/ext/mongo-driver/mongo"
+	"github.com/asppj/t-mk-opentrace/config"
+	mongo2 "github.com/asppj/t-mk-opentrace/ext/mongo-driver/mongo"
 )
 
 // Service Service

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	// "github.com/bilibili/kratos/pkg/net/metadata"
-	"t-mk-opentrace/ext/log-driver/log"
+	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
 
 	"github.com/gin-gonic/gin"
 

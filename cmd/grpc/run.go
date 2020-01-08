@@ -3,8 +3,9 @@ package grpc
 import (
 	"log"
 	"net"
-	"t-mk-opentrace/config"
-	g "t-mk-opentrace/ext/grpc-driver/grpc"
+
+	"github.com/asppj/t-mk-opentrace/config"
+	g "github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc"
 )
 
 // // Host Host

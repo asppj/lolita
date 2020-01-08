@@ -1,9 +1,9 @@
 package grpc
 
 import (
-	"t-mk-opentrace/api/proto/plan"
-	g "t-mk-opentrace/ext/grpc-driver/grpc"
-	pr "t-mk-opentrace/interval/plan"
+	"github.com/asppj/t-mk-opentrace/api/proto/plan"
+	g "github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc"
+	pr "github.com/asppj/t-mk-opentrace/interval/plan"
 )
 
 // RegisterRPC 注册rpc服务

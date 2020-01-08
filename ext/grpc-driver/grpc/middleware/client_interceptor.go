@@ -3,7 +3,8 @@ package middleware
 import (
 	"context"
 	"io"
-	"t-mk-opentrace/ext/log-driver/log"
+
+	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"

@@ -1,4 +1,4 @@
-module t-mk-opentrace
+module github.com/asppj/t-mk-opentrace
 
 go 1.13
 

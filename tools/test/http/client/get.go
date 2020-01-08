@@ -3,9 +3,10 @@ package main
 import (
 	"context"
 	"io"
-	"t-mk-opentrace/ext/http-driver/requests"
-	"t-mk-opentrace/ext/log-driver/log"
 	"time"
+
+	"github.com/asppj/t-mk-opentrace/ext/http-driver/requests"
+	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
 
 	"github.com/opentracing/opentracing-go"
 	"github.com/uber/jaeger-client-go"

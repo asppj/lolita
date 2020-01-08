@@ -2,8 +2,9 @@ package main
 
 import (
 	"io"
-	"t-mk-opentrace/config"
 	"time"
+
+	"github.com/asppj/t-mk-opentrace/config"
 
 	"github.com/go-errors/errors"
 

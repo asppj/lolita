@@ -3,10 +3,11 @@ package plan
 import (
 	"context"
 	"net/http"
-	"t-mk-opentrace/api/proto/task"
-	"t-mk-opentrace/ext/grpc-driver/grpc"
-	"t-mk-opentrace/ext/http-driver/requests"
-	"t-mk-opentrace/ext/log-driver/log"
+
+	"github.com/asppj/t-mk-opentrace/api/proto/task"
+	"github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc"
+	"github.com/asppj/t-mk-opentrace/ext/http-driver/requests"
+	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
 
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing/opentracing-go"

@@ -2,7 +2,8 @@ package mongo
 
 import (
 	"context"
-	"t-mk-opentrace/ext/log-driver/log"
+
+	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
 
 	"github.com/opentracing/opentracing-go"
 )

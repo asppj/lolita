@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	got "t-mk-opentrace/ext/gin-opentrace"
+	got "github.com/asppj/t-mk-opentrace/ext/gin-opentrace"
 
 	"github.com/gin-gonic/gin"
 )

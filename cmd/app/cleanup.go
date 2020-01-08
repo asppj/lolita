@@ -5,8 +5,9 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"t-mk-opentrace/cmd/grpc"
-	"t-mk-opentrace/cmd/http"
+
+	"github.com/asppj/t-mk-opentrace/cmd/grpc"
+	"github.com/asppj/t-mk-opentrace/cmd/http"
 )
 
 // CleanUp 清理

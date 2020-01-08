@@ -2,8 +2,9 @@ package grpc
 
 import (
 	"context"
-	"t-mk-opentrace/ext/grpc-driver/grpc/middleware"
 	"time"
+
+	"github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc/middleware"
 
 	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
 	"github.com/opentracing/opentracing-go"

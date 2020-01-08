@@ -1,10 +1,10 @@
 package main
 
 import (
-	"t-mk-opentrace/api/proto/task"
-	g "t-mk-opentrace/cmd/grpc"
-	"t-mk-opentrace/ext/grpc-driver/grpc"
-	"t-mk-opentrace/ext/log-driver/log"
+	"github.com/asppj/t-mk-opentrace/api/proto/task"
+	g "github.com/asppj/t-mk-opentrace/cmd/grpc"
+	"github.com/asppj/t-mk-opentrace/ext/grpc-driver/grpc"
+	"github.com/asppj/t-mk-opentrace/ext/log-driver/log"
 )
 
 var rpcServer = g.RPCAddr
