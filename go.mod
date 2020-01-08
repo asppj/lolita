@@ -3,9 +3,6 @@ module t-mk-opentrace
 go 1.13
 
 require (
-	git.dustess.com/mk-base/gin-ext v1.0.3-0.20200106064909-8b960a3b4e5f
-	git.dustess.com/mk-base/kafka-driver v1.0.1
-	git.dustess.com/mk-base/log v1.0.3
 	github.com/Shopify/sarama v1.24.1
 	github.com/bilibili/kratos v0.3.1 // indirect
 	github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd // indirect
@@ -16,6 +13,7 @@ require (
 	github.com/golang/protobuf v1.3.2
 	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645
+	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/olivere/elastic v6.2.26+incompatible
 	github.com/opentracing-contrib/go-gin v0.0.0-20190301172248-2e18f8b9c7d4
 	github.com/opentracing/opentracing-go v1.1.0
