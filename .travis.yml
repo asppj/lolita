@@ -10,8 +10,8 @@ branches:
 services:
   - docker
 script:
-  - make compose
-#  - docker login  -u ${dockeruser} -p ${dockerpwd}
+  - make publish
 
-#after_success:
-#  - make publish
+after_success:
+  - make compose
+
