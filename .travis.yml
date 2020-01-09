@@ -7,10 +7,10 @@ branches:
   only:
     - master
     - tag
-#services:
-#  - docker
+services:
+  - docker
 script:
-  - go get -v
-  - go test ./test
-  - go build -v .
-#  - docker-compose
+  - make build
+
+after_success:
+  - make publish

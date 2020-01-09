@@ -2,15 +2,15 @@ version: "3"
 services:
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: tools/docker-compose/app
+      dockerfile: tools/docker-compose/app/Dockerfile
     container_name: app_github
     privileged: true
     extra_hosts:
       - "github.global.ssl.fastly.net:151.101.185.194"
       - "github.com:192.30.253.112"
     volumes:
-      - ../../../:/app
+      - .:/app
     ports:
       - ${httPort}
       - ${rpcPort}
@@ -21,4 +21,4 @@ services:
       MgoPwd: lsp123123
       GOPROXY: "https://goproxy.cn,direct"
     command:
-      go run app.go
+      go run main.go
