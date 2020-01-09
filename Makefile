@@ -15,7 +15,6 @@ build:
 
 publish:
 	docker build . -t "t-go-opentrace:latest"
-	docker login  --username=${dockeruser} -p=${dockerpwd}
 	docker push asppj/t-go-opentrace:latest
 
 compose:

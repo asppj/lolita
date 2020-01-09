@@ -26,3 +26,5 @@ jobs:
 
     - name: Build
       run: go build -v .
+    - name: Publish image
+      run: make publish

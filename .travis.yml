@@ -11,6 +11,8 @@ services:
   - docker
 script:
   - make build
+  - docker login  --username=${dockeruser} -p=${dockerpwd}
 
 after_success:
+  - make compose
   - make publish
