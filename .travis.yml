@@ -10,8 +10,9 @@ branches:
 services:
   - docker
 script:
-  - echo ${dockerpwd}|docker login -u ${dockeruser} -password-stdin
-  - make publish
+  - docker login -u $dockeruser -p $dockerpwd
+  - docker build . -t t-go-opentrace:latest
+  - docker push asppj/t-go-opentrace:latest
 
 after_success:
   - make compose
