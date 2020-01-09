@@ -14,6 +14,7 @@ build:
 
 
 publish:
+	echo ${dockerpwd}|docker login -u ${dockeruser} -password-stdin
 	docker build . -t "t-go-opentrace:latest"
 	docker push asppj/t-go-opentrace:latest
 
