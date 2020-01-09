@@ -10,6 +10,7 @@ branches:
 services:
   - docker
 script:
+  - echo ${dockerpwd}|docker login -u ${dockeruser} -password-stdin
   - make publish
 
 after_success:
