@@ -1,43 +1,43 @@
 language: go
 go:
-- master
+  - master
 sudo: required
 branches:
   only:
-  - master
-  - tag
+    - master
+    - tag
 addons:
   hosts:
-  - asppj.top
+    - asppj.top
   ssh_known_hosts: asppj.top
-services:
-- docker
+#services:
+#  - docker
 before_install:
-- openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
-  -in deploy_rsa.enc -out deploy_rsa -d
-- echo $USER_NAME
-- echo $HOST
-- echo $TARGET_PATH
-- echo $DOCKER
-- echo $DOCKER_PWD
-- eval "$(ssh-agent -s)"
-- chmod 600 /tmp/deploy_rsa
-- ssh-add /tmp/deploy_rsa
+  - openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
+    -in deploy_rsa.enc -out deploy_rsa -d
+  - echo $USER_NAME
+  - echo $HOST
+  - echo $TARGET_PATH
+  - echo $DOCKER
+  - echo $DOCKER_PWD
+  - eval "$(ssh-agent -s)"
+  - chmod 600 /tmp/deploy_rsa
+  - ssh-add /tmp/deploy_rsa
 install:
-- docker build . -t asppj/t-go-opentrace:latest
-- rsync -az --delete ./dist/* $USER_NAME@$HOST:TARGET_PATH
+  - docker build . -t asppj/t-go-opentrace:latest
+  - rsync -az --delete ./dist/* $USER_NAME@$HOST:TARGET_PATH
 script:
-- docker login -u $DOCKER -p $DOCKER_PWD
-- docker push asppj/t-go-opentrace:latest
+  - docker login -u $DOCKER -p $DOCKER_PWD
+  - docker push asppj/t-go-opentrace:latest
 after_success:
-- make compose
+  - make compose
 before_deploy:
-- echo before_deploy
-deploy:
-- 
+  - echo before_deploy
+#deploy:
+#  -
 notifications:
   email:
     recipients:
-    - asppj@foxmail.com
+      - asppj@foxmail.com
     on_success: never
     on_failure: always
