@@ -9,6 +9,7 @@ branches:
 addons:
   hosts:
     - asppj.top
+  ssh_known_hosts: asppj.top
 services:
   - docker
 before_install:
@@ -23,13 +24,18 @@ before_install:
 #  - ssh-add /tmp/deploy_rsa
 install:
   - docker build . -t t-go-opentrace:latest
-  - rsync -az --delete ./dist/* $USER_NAME@$HOST:TARGET_PATH
+#  - rsync -az --delete ./dist/* $USER_NAME@$HOST:TARGET_PATH
 script:
   - docker login -u $DOCKER -p $DOCKER_PWD
   - docker push asppj/t-go-opentrace:latest
 after_success:
   - make compose
 
+before_deploy:
+  - echo before_deploy
+
+deploy:
+  -
 notifications:
   email:
     recipients:
