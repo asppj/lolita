@@ -13,13 +13,17 @@ addons:
 #services:
 #  - docker
 before_install:
-  - openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
-    -in deploy_rsa.enc -out deploy_rsa -d
   - echo $USER_NAME
   - echo $HOST
   - echo $TARGET_PATH
   - echo $DOCKER
   - echo $DOCKER_PWD
+  - echo $encrypted_be7dabd7bd4d_key
+  - echo $encrypted_be7dabd7bd4d_iv
+  - ls -al
+  - openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
+    -in deploy_rsa.enc -out deploy_rsa -d
+  - ls -al
   - eval "$(ssh-agent -s)"
   - chmod 600 /tmp/deploy_rsa
   - ssh-add /tmp/deploy_rsa
