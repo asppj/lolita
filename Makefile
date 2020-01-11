@@ -20,4 +20,6 @@ publish:
 compose:
 	docker-compose -f docker-compose.yml down
 	docker-compose -f docker-compose.yml up -d --force-recreate
-	docker-compose -f docker-compose.yml down
+
+start:
+	go run main.go
