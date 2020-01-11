@@ -26,11 +26,7 @@ jobs:
 
       - name: Build
         run: go build -v .
-#
-#      - name: Go-linter
-#        uses: Mushus/golangci-linter@v1
-#        with:
-#          config: .golangci.yml
+
 
       - name: Deploy to Staging server
         uses: webfactory/ssh-agent@v0.1.1
@@ -41,4 +37,4 @@ jobs:
       - name: Run SSH Command
         run: ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} "echo 'Hello Github Actions' > actions.log"
       - name: Restart docker
-        run: cd ${{ secrets.DOCKER_COMPOSE_PATH}} && docker-compose down && docker-compose up -d --force-recreate
+        run: cd ${{ secrets.DOCKER_COMPOSE_PATH}} && docker-compose down && docker-compose up -d
