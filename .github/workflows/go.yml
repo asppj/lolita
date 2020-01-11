@@ -26,11 +26,11 @@ jobs:
 
       - name: Build
         run: go build -v .
-
-      - name: Go-linter
-        uses: Mushus/golangci-linter@v1
-        with:
-          config: .golangci.yml
+#
+#      - name: Go-linter
+#        uses: Mushus/golangci-linter@v1
+#        with:
+#          config: .golangci.yml
 
       - name: Deploy to Staging server
         uses: webfactory/ssh-agent@v0.1.1
