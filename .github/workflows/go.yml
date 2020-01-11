@@ -29,11 +29,11 @@ jobs:
 
       - name: Deploy to Staging server
         uses: AEnterprise/rsync-deploy@v1.0
-          env:
-            DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-            ARGS: "-e -c -r --delete"
-            SERVER_PORT: ${{ secrets.REMOTE_PORT }}
-            FOLDER: "./"
-            SERVER_IP: ${{ secrets.REMOTE_HOST }}
-            USERNAME: ${{ secrets.REMOTE_USER }}
-            SERVER_DESTINATION: ${{ secrets.REMOTE_TARGET }}
+        env:
+          DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-e -c -r --delete"
+          SERVER_PORT: ${{ secrets.REMOTE_PORT }}
+          FOLDER: "./"
+          SERVER_IP: ${{ secrets.REMOTE_HOST }}
+          USERNAME: ${{ secrets.REMOTE_USER }}
+          SERVER_DESTINATION: ${{ secrets.REMOTE_TARGET }}
