@@ -41,4 +41,4 @@ jobs:
       - name: Run SSH Command
         run: ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} "echo 'Hello Github Actions' > actions.log"
       - name: Restart docker
-        run: cd ${{ secrets.DOCKER_COMPOSE_PATH}} && docker-compose down &&d ocker-compose up -d --force-recreate
+        run: cd ${{ secrets.DOCKER_COMPOSE_PATH}} && docker-compose down && docker-compose up -d --force-recreate
