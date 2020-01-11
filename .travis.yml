@@ -1,54 +1,46 @@
 language: go
 go:
-  - master
+- master
 sudo: required
 branches:
   only:
-    - master
-    - tag
+  - master
+  - tag
 addons:
   hosts:
-    - asppj.top
+  - asppj.top
   ssh_known_hosts: asppj.top
-#services:
-#  - docker
 before_install:
-  - pwd
-  - echo $USER_NAME
-  - echo $HOST
-  - echo $TARGET_PATH
-  - echo $DOCKER
-  - echo $DOCKER_PWD
-  - echo $encrypted_be7dabd7bd4d_key
-  - echo $encrypted_be7dabd7bd4d_iv
-  - echo $SUPERUSER
-  - echo $SUPERPWD
-  - ls -al
-#  - openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
-#    -in deploy_rsa.enc -out deploy_rsa -d
-#  - eval "$(ssh-agent -s)"
-#  - chmod 600 /tmp/deploy_rsa
-#  - ssh-add /tmp/deploy_rsa
+- openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
+  -in deploy_rsa.enc -out ./deploy_rsa -d
+- pwd
+- echo $USER_NAME
+- echo $HOST
+- echo $TARGET_PATH
+- echo $DOCKER
+- echo $DOCKER_PWD
+- echo $encrypted_be7dabd7bd4d_key
+- echo $encrypted_be7dabd7bd4d_iv
+- echo $SUPERUSER
+- echo $SUPERPWD
+- ls -al
 install:
-  - docker build . -t asppj/t-go-opentrace:latest
-#  - rsync -az --delete ./dist/* $USER_NAME@$HOST:TARGET_PATH
+- docker build . -t asppj/t-go-opentrace:latest
 script:
-  - docker login -u $DOCKER -p $DOCKER_PWD
-  - docker push asppj/t-go-opentrace:latest
+- docker login -u $DOCKER -p $DOCKER_PWD
+- docker push asppj/t-go-opentrace:latest
 after_success:
-  - make compose
+- make compose
 before_deploy:
-  - echo $SUPERPWD | ssh $SUPERUSER@$HOST -o  stricthostkeychecking=no
-  - pwd&&ls -al
-#deploy:
-#  -
+- echo $SUPERPWD | ssh $SUPERUSER@$HOST -o  stricthostkeychecking=no
+- pwd&&ls -al
 notifications:
   email:
     recipients:
-      - asppj@foxmail.com
+    - asppj@foxmail.com
     on_success: never
     on_failure: always
 env:
   global:
-    - secure: h7EIEpHDpquhnvlg3CnymDn6OWph6zxq9IxhxkRi9jnH3EuPBlq0vG/yutuby+s/KcGnulvqArXpc2wRYIrp8METCWBwYLwnOs994bdQc6BBJH0goYEgbp00Fb9nHtT9+DnzezNCLc7lp6fEDDB+ZRt+4h4RVGde7P543IZVCo76kR6h5+pC6PfXHmSXsG1XmUOF/viUB6LMeZ7aJ92HI3njh+ZlHGqy5zh0Rn4lk+ZjDtNEZ0Z8O5aCe5r2tB4qU2JNNmqGKmyx7Kk1tKV4090qvrijE7C0h415GcHlDtEl4nwCikiRAOrb/Z2SkR6YHr4dYKBucGsrw/uQzTcnQ5QjlVfHOf5X7P5djb+4g0BUUS+UNXnE+2rwqjtEKkksl6d3r7TQkJhYPk6+BOP1breXsY+FQAC7YhhU5KFOEVTO7zgFP1OK23vVpekVoGaW+fRgEuc3y4ZuFUmXBoGATzBemntT/ApscpXQjh8FL2tE2F2cJOWHo+qRqXzESYcdf6yKew2gWZjpRggRnwsPXzNohCry3RtVrexqsSlj7EUeggu9kkkQqXz7+BjLiSrKqUhttdvD4NoeR7QXyI/M3XmjLrMg1KkmwJu9dW+J81zBHAsSV0NFkmGg/ttuWOoGw8YmurMD4h4AyCcOM2/Q6fstDKHqlgBeuoAy0PbqA+g=
-    - secure: LSiXYIUYll6I9HpmR/qckIO4GX3i/i666w0F8PMNWFV4CR7MbUNMVT0s8z4KuKMqd+HPvgYTghN/tTBOo0+wjg0fibzFAclLHJl7Tf0Vzk8EayEhlBjj3bHhkhqABv4LFIHLhfiPmDx6jpZ7O4l2K8NEYhoI/ogO36UwtGGU6VSn7dYG5tPtz8x4cjfsq3YBB78Iy7JBAJ345Tvh4VZLflscFJwZMxePtSz63ScMrzjECIqgxZAdaWWAJheZkI29+c6dqRGeL3YgClCbg7bRTI/cAo7Pd27RjkuPt4++vT/jBiMZz00R93fgOpXjFIgIMPWSaJ7X2J3UKWuJqUkYezD52yvGfUgIyRXtJjzX9gbtoa0a4VcQ0W8oBsCvVCTgPTx30cfayBmjw3iDRftQXPjiSPyS8Tp9cuwtqRwiLsyRTT/1l2+YdGEcSZrSZj89DeJeSo4IJbZcE+y3K43xD+JNfqvFR9ESajT11wJG4MWBGatokx+z+4NkCa9Maes5P+D0FqvrGDEgCgw3fYYvdoE9rzSVdWBti+QMSJfzjuznbC3lKJGEX4Nsn6wNs1gEn+7YSchR2gBL4XyTkNdm+RJ67TZvdqKIilxoYPrBOYhEAmx4XUN1MtA6SabfLv9TWu5ycA7L7mexVOdcXsV310W593GforJNPdXKhJwbUZk=
+  - secure: h7EIEpHDpquhnvlg3CnymDn6OWph6zxq9IxhxkRi9jnH3EuPBlq0vG/yutuby+s/KcGnulvqArXpc2wRYIrp8METCWBwYLwnOs994bdQc6BBJH0goYEgbp00Fb9nHtT9+DnzezNCLc7lp6fEDDB+ZRt+4h4RVGde7P543IZVCo76kR6h5+pC6PfXHmSXsG1XmUOF/viUB6LMeZ7aJ92HI3njh+ZlHGqy5zh0Rn4lk+ZjDtNEZ0Z8O5aCe5r2tB4qU2JNNmqGKmyx7Kk1tKV4090qvrijE7C0h415GcHlDtEl4nwCikiRAOrb/Z2SkR6YHr4dYKBucGsrw/uQzTcnQ5QjlVfHOf5X7P5djb+4g0BUUS+UNXnE+2rwqjtEKkksl6d3r7TQkJhYPk6+BOP1breXsY+FQAC7YhhU5KFOEVTO7zgFP1OK23vVpekVoGaW+fRgEuc3y4ZuFUmXBoGATzBemntT/ApscpXQjh8FL2tE2F2cJOWHo+qRqXzESYcdf6yKew2gWZjpRggRnwsPXzNohCry3RtVrexqsSlj7EUeggu9kkkQqXz7+BjLiSrKqUhttdvD4NoeR7QXyI/M3XmjLrMg1KkmwJu9dW+J81zBHAsSV0NFkmGg/ttuWOoGw8YmurMD4h4AyCcOM2/Q6fstDKHqlgBeuoAy0PbqA+g=
+  - secure: LSiXYIUYll6I9HpmR/qckIO4GX3i/i666w0F8PMNWFV4CR7MbUNMVT0s8z4KuKMqd+HPvgYTghN/tTBOo0+wjg0fibzFAclLHJl7Tf0Vzk8EayEhlBjj3bHhkhqABv4LFIHLhfiPmDx6jpZ7O4l2K8NEYhoI/ogO36UwtGGU6VSn7dYG5tPtz8x4cjfsq3YBB78Iy7JBAJ345Tvh4VZLflscFJwZMxePtSz63ScMrzjECIqgxZAdaWWAJheZkI29+c6dqRGeL3YgClCbg7bRTI/cAo7Pd27RjkuPt4++vT/jBiMZz00R93fgOpXjFIgIMPWSaJ7X2J3UKWuJqUkYezD52yvGfUgIyRXtJjzX9gbtoa0a4VcQ0W8oBsCvVCTgPTx30cfayBmjw3iDRftQXPjiSPyS8Tp9cuwtqRwiLsyRTT/1l2+YdGEcSZrSZj89DeJeSo4IJbZcE+y3K43xD+JNfqvFR9ESajT11wJG4MWBGatokx+z+4NkCa9Maes5P+D0FqvrGDEgCgw3fYYvdoE9rzSVdWBti+QMSJfzjuznbC3lKJGEX4Nsn6wNs1gEn+7YSchR2gBL4XyTkNdm+RJ67TZvdqKIilxoYPrBOYhEAmx4XUN1MtA6SabfLv9TWu5ycA7L7mexVOdcXsV310W593GforJNPdXKhJwbUZk=
