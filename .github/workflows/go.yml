@@ -35,11 +35,22 @@ jobs:
       - name: Setup knownhosts
         run: ssh-keyscan ${{ secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
       - name: Run SSH Command
-        run: ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} "cd ${{ secrets.DOCKER_COMPOSE_PATH}} && ls -al &&  docker-compose down &&  docker-compose up -d"
+        run: |
+        # ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} "cd ${{ secrets.DOCKER_COMPOSE_PATH}} && ls -al &&  docker-compose down &&  docker-compose up -d"
+        ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}}
+        cd ${{ secrets.DOCKER_COMPOSE_PATH}}
+        pwd
+        ls -al
+        count=`ps -ef |grep $1 |grep -v "grep" |wc -l`
+        echo $count
+
+        if [ 0 == $count ]; then
+        docker-compose up -d
+        else
+        docker-compose restart
+        fi
+
       - name: Restart docker
         run: |
-          echo ${{ secrets.DOCKER_COMPOSE_PATH}}
-          #          cd ${{ secrets.DOCKER_COMPOSE_PATH}}
+          pwd
           ls -al
-#          sudo docker-compose restart
-#          sudo docker-compose up -d
