@@ -36,17 +36,16 @@ jobs:
         run: ssh-keyscan ${{ secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
       - name: Run SSH Command
         run: |
-          cmd=`cd ${{secrets.DOCKER_COMPOSE_PATH}}
-               pwd
-               ls -al
-               count=`docker ps |grep -v "project_github" |wc -l`
-               echo $count
-               if [ 0 == $count ]; then
-                   docker-compose up -d
-               else
-                   docker-compose restart
-               fi`
-          ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} cmd
+          ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} `cd ${{secrets.DOCKER_COMPOSE_PATH}}
+          pwd
+          ls -al
+          count=`docker ps |grep -v "project_github" |wc -l`
+          echo $count
+          if [ 0 == $count ]; then
+              docker-compose up -d
+          else
+              docker-compose restart
+          fi`
 
 
       - name: Restart docker
