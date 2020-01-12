@@ -40,10 +40,13 @@ jobs:
           pwd
           ls -al
           count=`docker ps |grep -v "project_github" |wc -l`
+          echo "指定进程数量："
           echo $count
           if [ 0 == $count ]; then
+              echo "开启进程："
               docker-compose up -d
           else
+              echo "重启进程"
               docker-compose restart
           fi`
 
