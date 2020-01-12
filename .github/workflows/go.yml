@@ -36,7 +36,7 @@ jobs:
         run: ssh-keyscan ${{ secrets.REMOTE_HOST}} >> ~/.ssh/known_hosts
       - name: Run SSH Command
         run: |
-          ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} `cd ${{secrets.DOCKER_COMPOSE_PATH}}
+          ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} "cd ${{secrets.DOCKER_COMPOSE_PATH}}
           pwd
           ls -al
           count=`docker ps |grep -v "project_github" |wc -l`
@@ -48,7 +48,7 @@ jobs:
           else
               echo "重启进程"
               docker-compose restart
-          fi`
+          fi"
 
 
       - name: Restart docker
