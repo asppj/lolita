@@ -38,7 +38,7 @@ jobs:
         run: ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} "echo 'Hello Github Actions' > actions.log"
       - name: Restart docker
         run: |
-          sleep 5
+          echo ${{ secrets.DOCKER_COMPOSE_PATH}}
           cd ${{ secrets.DOCKER_COMPOSE_PATH}}
           ls -al
           sudo docker-compose restart
