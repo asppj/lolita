@@ -212,8 +212,8 @@ var s *MidServer
 // NewServer 创建服务
 func NewServer() {
 	// 参数解析
-	localPort := flag.Int("localPort", 8080, "客户端访问端口")
-	remotePort := flag.Int("remotePort", 8888, "服务访问端口")
+	localPort := flag.Int("localPort", 5008, "客户端访问端口")
+	remotePort := flag.Int("remotePort", 5009, "服务访问端口")
 	flag.Parse()
 	// if flag.NFlag() != 2 {
 	flag.PrintDefaults()

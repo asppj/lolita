@@ -80,12 +80,12 @@ func (c *Client) Stop() {
 }
 func main() {
 	// 参数解析
-	host := flag.String("host", "127.0.0.1", "服务器地址")
-	remotePort := flag.Int("remotePort", 8888, "服务器端口")
+	host := flag.String("host", "asppj.top", "服务器地址")
+	remotePort := flag.Int("remotePort", 5009, "服务器端口")
 	localPort := flag.Int("localPort", 6006, "本地端口")
 	flag.Parse()
 	// if flag.NFlag() != 3 {
-	// 	flag.PrintDefaults()
+	flag.PrintDefaults()
 	// 	os.Exit(1)
 	// }
 	// 建立与服务器的连接
