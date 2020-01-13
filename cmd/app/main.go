@@ -3,6 +3,8 @@ package app
 import (
 	"sync"
 
+	"github.com/asppj/t-go-opentrace/tools/nbcs/server"
+
 	"github.com/asppj/t-go-opentrace/cmd/grpc"
 	"github.com/asppj/t-go-opentrace/cmd/http"
 	ant "github.com/asppj/t-go-opentrace/ext/ants-driver/ants"
@@ -11,11 +13,6 @@ import (
 
 func init() {
 	InitDBs()
-}
-
-// app app
-func main() {
-	Main()
 }
 
 // Main app
@@ -30,6 +27,7 @@ func Main() {
 	defer ant.Release()
 	group := sync.WaitGroup{}
 	defer group.Wait()
+	// http
 	group.Add(1)
 	ant.Go(func() {
 		if err := http.GinInitServer(); err != nil {
@@ -37,11 +35,18 @@ func Main() {
 		}
 		group.Done()
 	})
+	// grpc
 	group.Add(1)
 	ant.Go(func() {
 		if err := grpc.RPCServer(); err != nil {
 			panic(err)
 		}
+		group.Done()
+	})
+	// 启动内网
+	group.Add(1)
+	ant.Go(func() {
+		server.NewServer()
 		group.Done()
 	})
 	ant.Go(func() {

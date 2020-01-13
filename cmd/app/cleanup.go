@@ -6,6 +6,8 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/asppj/t-go-opentrace/tools/nbcs/server"
+
 	"github.com/asppj/t-go-opentrace/cmd/grpc"
 	"github.com/asppj/t-go-opentrace/cmd/http"
 )
@@ -33,4 +35,5 @@ func shutDown() {
 	if err := http.GinShutDown(); err != nil {
 		log.Println("关闭http失败")
 	}
+	server.StopServer()
 }
