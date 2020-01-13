@@ -4,6 +4,10 @@ import (
 	"context"
 	"time"
 
+	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
+
+	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
+
 	"github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc/middleware"
 
 	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
@@ -30,9 +34,15 @@ func Dial(target string, opts ...DialOption) (*ClientConn, error) {
 		grpc.WithInsecure(),
 		// clientDialOption(),
 		grpc.WithUnaryInterceptor(
-			otgrpc.OpenTracingClientInterceptor(opentracing.GlobalTracer())),
+			grpc_middleware.ChainUnaryClient(
+				otgrpc.OpenTracingClientInterceptor(opentracing.GlobalTracer()),
+				grpc_prometheus.UnaryClientInterceptor,
+			)),
 		grpc.WithStreamInterceptor(
-			otgrpc.OpenTracingStreamClientInterceptor(opentracing.GlobalTracer())),
+			grpc_middleware.ChainStreamClient(
+				otgrpc.OpenTracingStreamClientInterceptor(opentracing.GlobalTracer()),
+				grpc_prometheus.StreamClientInterceptor,
+			)),
 	)
 	return grpc.Dial(target, opts...)
 }

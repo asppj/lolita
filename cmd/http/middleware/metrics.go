@@ -26,5 +26,4 @@ func PromMiddle() gin.HandlerFunc {
 // RegisterEndpoint 注册推送接口
 func RegisterEndpoint(router *gin.Engine, prefix string) {
 	metrics.RegisterEndpoint(router, prefix)
-	return
 }
