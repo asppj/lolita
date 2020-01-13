@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - v1.*
 jobs:
 
   build:
@@ -58,4 +60,5 @@ jobs:
           else
               echo "Process Restart"
               docker-compose restart
-          fi"
+          fi
+          echo `docker ps|grep project_github`"
