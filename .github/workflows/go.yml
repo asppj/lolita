@@ -36,7 +36,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    need: build
+    needs: build
     steps:
       - name: Deploy to Staging server
         uses: webfactory/ssh-agent@v0.1.1
