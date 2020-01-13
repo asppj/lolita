@@ -1,12 +1,14 @@
 name: Go
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
 
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-
       - name: Set up Go 1.13
         uses: actions/setup-go@v1
         with:
@@ -27,7 +29,15 @@ jobs:
       - name: Build
         run: go build -v .
 
-
+      - name: Restart docker
+        run: |
+          pwd
+          ls -al
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    need: build
+    steps:
       - name: Deploy to Staging server
         uses: webfactory/ssh-agent@v0.1.1
         with:
@@ -40,18 +50,12 @@ jobs:
           pwd
           ls -al
           count=`docker ps |grep -v "project_github" |wc -l`
-          echo "指定进程数量："
-          echo $count
+          echo "Process Count："
+          echo ${count}
           if [ 0 == $count ]; then
-              echo "开启进程："
+              echo "Process Start："
               docker-compose up -d
           else
-              echo "重启进程"
+              echo "Process Restart"
               docker-compose restart
           fi"
-
-
-      - name: Restart docker
-        run: |
-          pwd
-          ls -al
