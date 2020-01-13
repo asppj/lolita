@@ -11,7 +11,7 @@ import (
 func init() {
 	name := os.Getenv("name")
 	if name == "" {
-		name = "t_mk_opentrace"
+		name = "lolita"
 	}
 	metrics.Init(name)
 	// middleware.Init(name)
