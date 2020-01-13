@@ -15,7 +15,7 @@ const api = "api"
 // RegisterRouter 注册路由
 func RegisterRouter(router *gin.Engine) error {
 	// 注册端点
-	middleware.RegisterEndpoint(router, prefix)
+	middleware.RegisterEndpoint(router, "")
 	apiRouter := router.Group(prefix + api)
 	registerAPIRouter(apiRouter)
 	mRouter := router.Group(prefix + mobile)
