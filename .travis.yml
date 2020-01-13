@@ -82,10 +82,9 @@ after_success:
 addons:
   hosts:
   - asppj.top
-  ssh_known_hosts: asppj.top
 before_install:
-- openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
-  -in deploy_rsa.enc -out ./deploy_rsa -d
+#- openssl aes-256-cbc -K $encrypted_be7dabd7bd4d_key -iv $encrypted_be7dabd7bd4d_iv
+#  -in deploy_rsa.enc -out ./deploy_rsa -d
 - pwd
 - echo $USER_NAME
 - echo $HOST

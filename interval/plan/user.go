@@ -8,7 +8,5 @@ import (
 
 // GetUser GetUser
 func GetUser(ctx *gin.Context) {
-	TestTask(ctx.Request.Context())
 	ctx.String(http.StatusOK, "user oks")
-
 }

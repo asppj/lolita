@@ -48,7 +48,7 @@ func GinInitServer() error {
 	Host := conf.Host
 	Port := conf.Port
 	routerHandel.Use(middleware.OpenTraceMiddleware())
-	routerHandel.Use(middleware.PromMiddle())
+	//routerHandel.Use(middleware.PromMiddle())
 	if err := RegisterRouter(routerHandel); err != nil {
 		panic(err)
 	}
