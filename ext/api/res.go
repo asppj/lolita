@@ -1,36 +1,34 @@
 package api
 
-// Res api response结构
-type Res struct {
-	Success bool        `json:"success"`
-	Msg     string      `json:"msg"`
-	Data    interface{} `json:"data"`
+// Response 返回格式
+type Response struct {
+	Success bool        `json:"success"`        // 请求是否成功
+	Data    interface{} `json:"data"`           // 数据
+	Code    int         `json:"code,omitempty"` // 错误码
+	Msg     string      `json:"msg"`            // 错误提示
 }
 
-// DefaultRes 获取默认api response
-func DefaultRes() *Res {
-	return &Res{true, SUCCESS, struct{}{}}
+// newRes 新建
+func newRes(success bool, code int, msg string, data interface{}) *Response {
+	return &Response{
+		Success: success,
+		Data:    data,
+		Code:    code,
+		Msg:     msg,
+	}
 }
 
-// NewRes 新建api response
-func NewRes(success bool, msg string, data interface{}) (res Res) {
-	res = Res{}
-	res.Success = success
-	res.Msg = msg
-	res.Data = data
-	return
+// DefaultRes 默认
+func DefaultRes() *Response {
+	return newRes(true, StatusOK, SUCCESS, struct{}{})
 }
 
-// FailedRes 错误返回结构（just for swagger）
-type FailedRes struct {
-	Success bool        `json:"success" binding:"required" example:"false"`          // 请求结果，失败:false，成功:true
-	Msg     string      `json:"msg" binding:"required" example:"req_data_val_error"` // 请求结果的message
-	Data    interface{} `json:"data" binding:"required"`                             // 返回的数据
+// failedRes 失败
+func failedRes() *Response {
+	return newRes(false, StatusUnCustomize, unCustomize, struct{}{})
 }
 
-// SuccessRes 正确返回结构（just for swagger）
-type SuccessRes struct {
-	Success bool        `json:"success" binding:"required" example:"true"` // 请求结果，失败:false，成功:true
-	Msg     string      `json:"msg" binding:"required" example:"ok"`       // 请求结果的message
-	Data    interface{} `json:"data" binding:"required"`                   // 返回的数据
+// successRes 成功
+func successRes() *Response {
+	return DefaultRes()
 }

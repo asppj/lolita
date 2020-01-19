@@ -3,8 +3,6 @@ package app
 import (
 	"sync"
 
-	"github.com/asppj/t-go-opentrace/tools/nbcs/server"
-
 	"github.com/asppj/t-go-opentrace/cmd/grpc"
 	"github.com/asppj/t-go-opentrace/cmd/http"
 	ant "github.com/asppj/t-go-opentrace/ext/ants-driver/ants"
@@ -44,11 +42,11 @@ func Main() {
 		group.Done()
 	})
 	// 启动内网
-	group.Add(1)
-	ant.Go(func() {
-		server.NewServer()
-		group.Done()
-	})
+	// group.Add(1)
+	// ant.Go(func() {
+	// 	server.NewServer()
+	// 	group.Done()
+	// })
 	ant.Go(func() {
 		CleanUp()
 	})

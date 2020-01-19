@@ -3,11 +3,10 @@ package plan
 import (
 	"context"
 
-	"github.com/asppj/t-go-opentrace/api/proto/plan"
-	pm "github.com/asppj/t-go-opentrace/api/proto/plan"
-	"github.com/asppj/t-go-opentrace/api/proto/task"
 	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
 	rpc "github.com/asppj/t-go-opentrace/pkg/plan/rpc"
+	pm "github.com/asppj/t-go-opentrace/proto/plan"
+	"github.com/asppj/t-go-opentrace/proto/task"
 )
 
 // RPCPlan RPCPlan
@@ -15,7 +14,7 @@ type RPCPlan struct {
 }
 
 // Search Search
-func (p *RPCPlan) Search(ctx context.Context, res *plan.Request) (*plan.Response, error) {
+func (p *RPCPlan) Search(ctx context.Context, res *pm.Request) (*pm.Response, error) {
 	cc, err := rpc.NewTaskDial()
 	if err != nil {
 		return nil, err
@@ -25,19 +24,19 @@ func (p *RPCPlan) Search(ctx context.Context, res *plan.Request) (*plan.Response
 			log.Warn()
 		}
 	}()
-	c := plan.NewServiceClient(cc)
-	return c.Delete(ctx, &plan.Request{
+	c := pm.NewServiceClient(cc)
+	return c.Delete(ctx, &pm.Request{
 		PlanID: res.PlanID,
 	})
 }
 
 // Delete Search
-func (p *RPCPlan) Delete(ctx context.Context, res *plan.Request) (*plan.Response, error) {
+func (p *RPCPlan) Delete(ctx context.Context, res *pm.Request) (*pm.Response, error) {
 	return delTask(ctx, res.PlanID)
 }
 
 // delTask delTask
-func delTask(ctx context.Context, planID string) (*plan.Response, error) {
+func delTask(ctx context.Context, planID string) (*pm.Response, error) {
 	cc, err := rpc.NewTaskDial()
 	if err != nil {
 		return nil, err
@@ -55,7 +54,7 @@ func delTask(ctx context.Context, planID string) (*plan.Response, error) {
 		log.Warn(err)
 		return nil, err
 	}
-	return &plan.Response{
+	return &pm.Response{
 		PlanName:  resp.NameRes,
 		StartTime: resp.LocalAndServerTime,
 		EndTime:   resp.LocalAndServerTime + "-end",

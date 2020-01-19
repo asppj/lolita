@@ -7,32 +7,11 @@ import (
 	"github.com/go-errors/errors"
 )
 
-const (
-	// StatusOK StatusOK
-	StatusOK = 600200 // RFC 7231, 6.3.1
-	// StatusBadRequest  StatusBadRequest
-	StatusBadRequest = 600400 // RFC 7231, 6.5.1
-	// StatusUnauthorized  StatusUnauthorized
-	StatusUnauthorized = 600401 // RFC 7235, 3.1
-	// StatusForbidden StatusForbidden
-	StatusForbidden = 600403 // RFC 7231, 6.5.3
-	// StatusNotFound StatusNotFound
-	StatusNotFound = 600404 // RFC 7231, 6.5.4
-	// StatusNotAcceptable StatusNotAcceptable
-	StatusNotAcceptable = 600406 // RFC 7231, 6.5.6
-	// StatusRequestTimeout StatusRequestTimeout
-	StatusRequestTimeout = 600408 // RFC 7231, 6.5.7
-	// StatusInternalServerError StatusInternalServerError
-	StatusInternalServerError = 600500 // RFC 7231, 6.6.1
-	// StatusServiceUnavailable StatusServiceUnavailable
-	StatusServiceUnavailable = 600503 // RFC 7231, 6.6.4
-)
-
 // Error Http返回错误
 type Error struct {
-	err    *errors.Error
-	status int
-	msg    []string // 添加提示
+	err  *errors.Error
+	code int      // 前端错误提示
+	msg  []string // 添加提示。不返回给前端只作为日志打印
 
 }
 
@@ -42,7 +21,7 @@ func New(e interface{}) *Error {
 }
 
 // NewWithMsg 返回
-func NewWithMsg(e interface{}, msg string, status int) *Error {
+func NewWithMsg(e interface{}, msg string, code int) *Error {
 	switch eIns := e.(type) {
 	case *Error:
 		eIns.err = errors.New(eIns.err)
@@ -50,8 +29,8 @@ func NewWithMsg(e interface{}, msg string, status int) *Error {
 			eIns.msg = append(eIns.msg, msg)
 		}
 		// 保留最初的status
-		if eIns.status <= 0 && status > 0 {
-			eIns.status = status
+		if eIns.code <= 0 && code > 0 {
+			eIns.code = code
 		}
 		return eIns
 	default:
@@ -61,30 +40,50 @@ func NewWithMsg(e interface{}, msg string, status int) *Error {
 		if msg != "" {
 			err.msg = []string{msg}
 		}
-		if status > 0 {
-			err.status = status
+		if code > 0 {
+			err.code = code
 		}
 		return err
 	}
 }
 
-// ErrInfo 转换错误格式为打印模式
-type ErrInfo struct {
-	Err    string
-	Msg    string
-	Status int
+// String  用于打印错误
+func (e *Error) Error() ErrInfo {
+	return ErrInfo{
+		Err:  e.err.ErrorStack(),
+		Msg:  strings.Join(e.msg, "\n"),
+		Code: e.code,
+	}
 }
 
-// String  用于打印错误
-func (e *Error) String() ErrInfo {
-	return ErrInfo{
-		Err:    e.err.ErrorStack(),
-		Msg:    strings.Join(e.msg, "\n"),
-		Status: e.status,
-	}
+// ErrorString  用于打印错误
+func (e *Error) ErrorString() string {
+	return e.Error().String()
 }
 
 // ErrorStack 转为string
 func (e *Error) ErrorStack() string {
-	return fmt.Sprintf("%+v", e.String())
+	return fmt.Sprintf("%+v", e.Error())
+}
+
+// Code 状态码
+func (e *Error) Code() int {
+	return e.code
+}
+
+// Msg 错误消息
+func (e *Error) Msg() string {
+	return strings.Join(e.msg, "\n")
+}
+
+// ErrInfo 转换错误格式为打印模式
+type ErrInfo struct {
+	Err  string
+	Msg  string
+	Code int
+}
+
+// String 打印
+func (i *ErrInfo) String() string {
+	return fmt.Sprintf("Err:%s\nMsg:%s\nCode:%d", i.Err, i.Msg, i.Code)
 }
