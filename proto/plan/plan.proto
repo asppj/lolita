@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package plan;
+
+service Service {
+    rpc Search (Request) returns (Response) {
+    }
+    rpc Delete (Request) returns (Response) {
+    }
+}
+service UpdateService {
+    rpc Update (Request) returns (Response) {
+    }
+}
+message Request {
+    string planID = 1;
+}
+
+message Response {
+    string planName = 1;
+    string startTime = 2;
+    string EndTime = 3;
+    enum Status {
+        start = 0;
+        end = 1;
+        Expires = 3;
+        Deleted = 4;
+    }
+    Status status = 4;
+    enum Code {
+        failed = 0;
+        success = 1;
+    }
+    Code code = 5;
+}

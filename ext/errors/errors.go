@@ -48,8 +48,8 @@ func NewWithMsg(e interface{}, msg string, code int) *Error {
 }
 
 // String  用于打印错误
-func (e *Error) Error() ErrInfo {
-	return ErrInfo{
+func (e *Error) Error() *ErrInfo {
+	return &ErrInfo{
 		Err:  e.err.ErrorStack(),
 		Msg:  strings.Join(e.msg, "\n"),
 		Code: e.code,

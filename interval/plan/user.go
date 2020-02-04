@@ -1,12 +1,17 @@
 package plan
 
 import (
-	"net/http"
+	"fmt"
 
+	"github.com/asppj/t-go-opentrace/ext/api"
+	"github.com/asppj/t-go-opentrace/ext/errors"
 	"github.com/gin-gonic/gin"
 )
 
 // GetUser GetUser
 func GetUser(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "user oks")
+	// res := api.DefaultRes()
+	resData := "正常数据"
+	err := errors.NewWithMsg(fmt.Errorf("customize"), "自定义错误", api.StatusBadRequest)
+	api.Send(ctx, resData, err)
 }
