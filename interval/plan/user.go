@@ -12,6 +12,6 @@ import (
 func GetUser(ctx *gin.Context) {
 	// res := api.DefaultRes()
 	resData := "正常数据"
-	err := errors.NewWithMsg(fmt.Errorf("customize"), "自定义错误", api.StatusBadRequest)
+	err := errors.NewWithMsg(fmt.Errorf("customize"), "自定义错误", errors.StatusBadRequest)
 	api.Send(ctx, resData, err)
 }

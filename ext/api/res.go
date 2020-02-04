@@ -1,5 +1,7 @@
 package api
 
+import "github.com/asppj/t-go-opentrace/ext/errors"
+
 // Response 返回格式
 type Response struct {
 	Success bool        `json:"success"`        // 请求是否成功
@@ -20,12 +22,12 @@ func newRes(success bool, code int, msg string, data interface{}) *Response {
 
 // DefaultRes 默认
 func DefaultRes() *Response {
-	return newRes(true, StatusOK, SUCCESS, struct{}{})
+	return newRes(true, errors.StatusOK, SUCCESS, struct{}{})
 }
 
 // failedRes 失败
 func failedRes() *Response {
-	return newRes(false, StatusUnCustomize, unCustomize, struct{}{})
+	return newRes(false, errors.StatusUnCustomize, unCustomize, struct{}{})
 }
 
 // successRes 成功
