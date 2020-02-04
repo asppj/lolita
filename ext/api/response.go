@@ -93,7 +93,6 @@ func Send(ctx *gin.Context, resData interface{}, err *errors.Error) {
 		res = failedRes()
 		res.Code = err.Code()
 		res.Msg = err.Msg()
-		res.Data = resData
 	} else {
 		res = successRes()
 		res.Data = resData
