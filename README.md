@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.com/asppj/t-go-opentrace.svg?branch=master)](https://travis-ci.com/asppj/t-go-opentrace)
-
+[![Build Status](https://travis-ci.com/asppj/lolita.svg?branch=master)](https://travis-ci.com/asppj/lolita)
 
 1. Logging - 用于记录离散的事件。例如，应用程序的调试信息或错误信息。它是我们诊断问题的依据。
 2. Metrics - 用于记录可聚合的数据。例如，队列的当前深度可被定义为一个度量值，在元素入队或出队时被更新；HTTP 请求个数可被定义为一个计数器，新请求到来时进行累加。
