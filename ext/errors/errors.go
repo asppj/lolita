@@ -3,7 +3,7 @@ package errors
 import (
 	"fmt"
 	"strings"
-
+	
 	"github.com/go-errors/errors"
 )
 
@@ -12,7 +12,7 @@ type Error struct {
 	err  *errors.Error
 	code int      // 前端错误提示
 	msg  []string // 添加提示。不返回给前端只作为日志打印
-
+	
 }
 
 // New 新建error  ineffectual assignment
