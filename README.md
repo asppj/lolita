@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.com/asppj/lolita.svg?branch=master)](https://travis-ci.com/asppj/lolita)
-
 1. Logging - 用于记录离散的事件。例如，应用程序的调试信息或错误信息。它是我们诊断问题的依据。
 2. Metrics - 用于记录可聚合的数据。例如，队列的当前深度可被定义为一个度量值，在元素入队或出队时被更新；HTTP 请求个数可被定义为一个计数器，新请求到来时进行累加。
 3. Tracing - 用于记录请求范围内的信息。例如，一次远程方法调用的执行过程和耗时。它是我们排查系统性能问题的利器。
@@ -196,3 +195,7 @@ mongodb/redis/es:
 1. [prometheus 介绍](https://www.imhanjm.com/2019/10/06/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3prometheus(go%20sdk)/)
 2. [【监控】Kafka - 详细指标](https://www.jianshu.com/p/92ae7e5992e2)
 3. [Grafana 与数据可视化](https://yunlzheng.gitbook.io/prometheus-book/part-ii-prometheus-jin-jie/grafana/grafana-panels)
+
+
+### Thanks
+[![avatar](jetbrains.png)](https://www.jetbrains.com/?from=lolita)
