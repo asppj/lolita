@@ -9,3 +9,7 @@ func TestProto(t *testing.T) {
 func TestGet(t *testing.T) {
 	t.Log("测试用例2")
 }
+
+func TestPost(t *testing.T) {
+	t.Log("测试用例post1")
+}
