@@ -55,10 +55,11 @@ jobs:
           pwd
           ls -al
           git pull
+          docker ps |grep -v "project_github"
           count=`docker ps |grep -v "project_github" |wc -l`
           echo "Process Count："
           echo ${count}
-          if [ 0 == $count ]; then
+          if [ 1 == $count ]; then
               echo "Process Start："
               docker-compose up -d
           else
