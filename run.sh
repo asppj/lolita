@@ -9,4 +9,4 @@ else
 echo "Process Restart"
 docker-compose restart
 fi
-echo `docker ps|grep project_github`"
+echo `docker ps|grep "lolita"`
