@@ -58,7 +58,7 @@ jobs:
           docker ps |grep -v "project_github"
           count=`docker ps |grep -v "project_github" |wc -l`
           echo "Process Count："
-          echo ${count}
+          echo $count
           if [ 1 == $count ]; then
               echo "Process Start："
               docker-compose up -d
