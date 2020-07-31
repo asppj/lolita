@@ -23,3 +23,5 @@ compose:
 
 start:
 	go run main.go
+run:
+	chmod +x run.sh &&./run.sh
