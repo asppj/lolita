@@ -12,8 +12,8 @@ services:
     volumes:
       - .:/app
     ports:
-      - ${httPort}
-      - ${rpcPort}
+      - 5000
+      - 50000
     environment:
       httPort: 5000
       rpcPort: 50000
