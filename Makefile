@@ -14,8 +14,8 @@ build:
 
 
 publish:
-	docker build . -t "t-go-opentrace:latest"
-	docker push asppj/t-go-opentrace:latest
+	docker build . -t "lolita:latest"
+	docker push asppj/lolita:latest
 
 compose:
 	docker-compose -f docker-compose.yml down
