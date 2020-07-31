@@ -51,6 +51,9 @@ jobs:
           ssh ${{ secrets.REMOTE_USER}}@${{ secrets.REMOTE_HOST}} "cd ${{secrets.DOCKER_COMPOSE_PATH}}
           pwd
           ls -al
+          cd project_github
+          pwd
+          ls -al
           count=`docker ps |grep -v "project_github" |wc -l`
           echo "Process Count："
           echo ${count}
