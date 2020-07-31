@@ -1,5 +1,5 @@
 
-FROM golang:1.13
+FROM docker.io/golang:1.13
 
 WORKDIR /app
 
