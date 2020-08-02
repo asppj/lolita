@@ -1,8 +1,8 @@
 package http
 
 import (
-	"github.com/asppj/t-go-opentrace/cmd/http/middleware"
-	"github.com/asppj/t-go-opentrace/interval/plan"
+	"github.com/asppj/lolita/cmd/http/middleware"
+	"github.com/asppj/lolita/interval/plan"
 
 	"github.com/gin-gonic/gin"
 )

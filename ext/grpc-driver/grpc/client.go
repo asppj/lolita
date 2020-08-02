@@ -8,7 +8,7 @@ import (
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 
-	"github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc/middleware"
+	"github.com/asppj/lolita/ext/grpc-driver/grpc/middleware"
 
 	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
 	"github.com/opentracing/opentracing-go"

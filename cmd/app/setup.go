@@ -4,7 +4,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/asppj/t-go-opentrace/config"
+	"github.com/asppj/lolita/config"
 
 	"github.com/go-errors/errors"
 

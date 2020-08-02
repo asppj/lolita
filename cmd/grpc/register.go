@@ -1,9 +1,9 @@
 package grpc
 
 import (
-	g "github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc"
-	pr "github.com/asppj/t-go-opentrace/interval/plan"
-	"github.com/asppj/t-go-opentrace/proto/plan"
+	g "github.com/asppj/lolita/ext/grpc-driver/grpc"
+	pr "github.com/asppj/lolita/interval/plan"
+	"github.com/asppj/lolita/proto/plan"
 )
 
 // RegisterRPC 注册rpc服务

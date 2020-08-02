@@ -1,8 +1,8 @@
 package conn
 
 import (
-	"github.com/asppj/t-go-opentrace/config"
-	mongo2 "github.com/asppj/t-go-opentrace/ext/mongo-driver/mongo"
+	"github.com/asppj/lolita/config"
+	mongo2 "github.com/asppj/lolita/ext/mongo-driver/mongo"
 )
 
 // Service Service

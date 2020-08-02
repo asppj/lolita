@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
+	"github.com/asppj/lolita/ext/log-driver/log"
 
 	"github.com/opentracing/opentracing-go"
 )

@@ -2,10 +2,10 @@ package plan
 
 import (
 	"fmt"
-	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
+	"github.com/asppj/lolita/ext/log-driver/log"
 	
-	"github.com/asppj/t-go-opentrace/ext/api"
-	"github.com/asppj/t-go-opentrace/ext/errors"
+	"github.com/asppj/lolita/ext/api"
+	"github.com/asppj/lolita/ext/errors"
 	"github.com/gin-gonic/gin"
 )
 

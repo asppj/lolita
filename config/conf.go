@@ -1,9 +1,9 @@
 package config
 
 import (
-	ginConfig "github.com/asppj/t-go-opentrace/ext/config"
+	ginConfig "github.com/asppj/lolita/ext/config"
 
-	ginConstant "github.com/asppj/t-go-opentrace/ext/constant"
+	ginConstant "github.com/asppj/lolita/ext/constant"
 
 	"github.com/stevenroose/gonfig"
 )

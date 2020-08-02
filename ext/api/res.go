@@ -1,6 +1,6 @@
 package api
 
-import "github.com/asppj/t-go-opentrace/ext/errors"
+import "github.com/asppj/lolita/ext/errors"
 
 // Response 返回格式
 type Response struct {

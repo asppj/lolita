@@ -1,7 +1,7 @@
 package grpc
 
 import (
-	"github.com/asppj/t-go-opentrace/ext/grpc-driver/grpc/middleware"
+	"github.com/asppj/lolita/ext/grpc-driver/grpc/middleware"
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"

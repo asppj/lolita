@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/asppj/t-go-opentrace/ext/redis-driver/redis"
+	"github.com/asppj/lolita/ext/redis-driver/redis"
 )
 
 // FIFO fifo缓存

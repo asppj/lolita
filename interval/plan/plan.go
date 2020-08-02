@@ -3,10 +3,10 @@ package plan
 import (
 	"context"
 
-	"github.com/asppj/t-go-opentrace/ext/log-driver/log"
-	rpc "github.com/asppj/t-go-opentrace/pkg/plan/rpc"
-	pm "github.com/asppj/t-go-opentrace/proto/plan"
-	"github.com/asppj/t-go-opentrace/proto/task"
+	"github.com/asppj/lolita/ext/log-driver/log"
+	rpc "github.com/asppj/lolita/pkg/plan/rpc"
+	pm "github.com/asppj/lolita/proto/plan"
+	"github.com/asppj/lolita/proto/task"
 )
 
 // RPCPlan RPCPlan

@@ -1,4 +1,4 @@
-module github.com/asppj/t-go-opentrace
+module github.com/asppj/lolita
 
 go 1.13
 

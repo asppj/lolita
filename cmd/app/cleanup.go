@@ -6,10 +6,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/asppj/t-go-opentrace/tools/nbcs/server"
+	"github.com/asppj/lolita/tools/nbcs/server"
 
-	"github.com/asppj/t-go-opentrace/cmd/grpc"
-	"github.com/asppj/t-go-opentrace/cmd/http"
+	"github.com/asppj/lolita/cmd/grpc"
+	"github.com/asppj/lolita/cmd/http"
 )
 
 // CleanUp 清理

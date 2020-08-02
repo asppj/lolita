@@ -3,7 +3,7 @@ package middleware
 import (
 	"os"
 
-	metrics "github.com/asppj/t-go-opentrace/ext/gin-metrics"
+	metrics "github.com/asppj/lolita/ext/gin-metrics"
 
 	"github.com/gin-gonic/gin"
 )
