@@ -13,3 +13,7 @@ func TestGet(t *testing.T) {
 func TestPost(t *testing.T) {
 	t.Log("测试用例post1")
 }
+
+func TestPUt(t *testing.T) {
+	t.Log("测试用例put")
+}
