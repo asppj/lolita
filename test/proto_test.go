@@ -20,3 +20,7 @@ func TestPUT(t *testing.T) {
 func TestPATCH(t *testing.T) {
 	t.Log("测试用例patch")
 }
+
+func TestPATCH2(t *testing.T) {
+	t.Log("测试用例patch2")
+}
