@@ -25,3 +25,6 @@ start:
 	go run main.go
 run:
 	chmod +x run.sh &&./run.sh
+
+lint:
+	gocyclo -top 15 .
