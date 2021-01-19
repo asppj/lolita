@@ -195,6 +195,7 @@ mongodb/redis/es:
 1. [prometheus 介绍](https://www.imhanjm.com/2019/10/06/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3prometheus(go%20sdk)/)
 2. [【监控】Kafka - 详细指标](https://www.jianshu.com/p/92ae7e5992e2)
 3. [Grafana 与数据可视化](https://yunlzheng.gitbook.io/prometheus-book/part-ii-prometheus-jin-jie/grafana/grafana-panels)
+3. [其他参考](https://github.com/apache/skywalking-kubernetes)
 
 
 ### Thanks
