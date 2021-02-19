@@ -27,4 +27,5 @@ config.json
 *.iml
 out
 gen
+tools/docker-compose/metrics/prometheus/data
 
