@@ -29,4 +29,13 @@ out
 gen
 tools/docker-compose/metrics/prometheus/data
 tools/docker-compose/metrics/grafana
+#tools/docker-compose/rocketmq
+tools/docker-compose/rocketmq/data/broker/logs
+tools/docker-compose/rocketmq/data/namesrv
+tools/docker-compose/rocketmq/data1/namesrv
+tools/docker-compose/rocketmq/data/broker/store
+tools/docker-compose/rocketmq/data1/broker/logs
+tools/docker-compose/rocketmq/data1/broker/store
+
+
 
