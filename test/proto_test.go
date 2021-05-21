@@ -27,3 +27,6 @@ func TestPATCH2(t *testing.T) {
 func TestPATCH3(t *testing.T) {
 	t.Log("测试用例patch3")
 }
+func TestPATCH4(t *testing.T) {
+	t.Log("测试用例patch4")
+}
