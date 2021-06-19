@@ -182,6 +182,9 @@ mongodb/redis/es:
 
 - github.com/prometheus/client_golang
 
+### 工具
+[dem 开发辅助工具 https://github.com/asppj/dem](htts://github.com/asppj/dem)
+
 ### opentrace 参考资料
 
 1. [几种分布式调用链监控组件的比较](https://juejin.im/post/5a0579e6f265da4326524f0f#heading-0)
