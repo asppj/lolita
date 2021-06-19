@@ -183,7 +183,7 @@ mongodb/redis/es:
 - github.com/prometheus/client_golang
 
 ### 工具
-[dem 开发辅助工具 https://github.com/asppj/dem](htts://github.com/asppj/dem)
+[dem 开发辅助工具 https://github.com/asppj/dem](https://github.com/asppj/dem)
 
 ### opentrace 参考资料
 
