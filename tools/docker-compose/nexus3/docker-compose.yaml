@@ -1,0 +1,23 @@
+version: "2"
+services:
+  nexus3:
+    image: sonatype/nexus3:latest
+    container_name: nexus3
+    privileged: true
+    ports:
+      - "15081:8081"
+      - "15001:5001"
+      - "15002:5002"
+      - "15003:5003"
+      - "15004:5004"
+      - "15005:5005"
+    volumes:
+      - ./nexus-data/:/nexus-data/
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+    networks:
+      - default
+
+networks:
+  default:
