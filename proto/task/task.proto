@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package task;
-
+option go_package = "github.com/asppj/lolita/task";
 service TaskService {
     rpc Search (TaskRequest) returns (TaskResponse) {
     }

@@ -1,8 +1,11 @@
 
 
-protoDir=./api/proto/
+protoDir=./proto/
 task=task
 plan=plan
+install:
+	go get -u github.com/golang/protobuf/protoc-gen-go
+
 rpc:
 	protoc --go_out=plugins=grpc:. ${protoDir}${task}/*.proto
 	protoc --go_out=plugins=grpc:. ${protoDir}${plan}/*.proto

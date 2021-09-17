@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 package plan;
+option go_package = "github.com/asppj/lolita/plan";
 
 service Service {
     rpc Search (Request) returns (Response) {

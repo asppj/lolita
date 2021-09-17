@@ -1,13 +1,12 @@
 package main
 
 import (
-	"github.com/asppj/lolita/api/proto/task"
-	g "github.com/asppj/lolita/cmd/grpc"
 	"github.com/asppj/lolita/ext/grpc-driver/grpc"
 	"github.com/asppj/lolita/ext/log-driver/log"
+	"github.com/asppj/lolita/proto/task"
 )
 
-var rpcServer = g.RPCAddr
+var rpcServer = "127.0.0.1:50000"
 
 // TaskDial dial
 func TaskDial() (*grpc.ClientConn, error) {
