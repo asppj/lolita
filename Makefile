@@ -31,3 +31,6 @@ run:
 
 lint:
 	gocyclo -top 15 .
+
+update:
+	go list -u -m -json all | go-mod-outdated -update -direct

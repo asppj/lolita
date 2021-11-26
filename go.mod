@@ -26,7 +26,7 @@ require (
 	github.com/pelletier/go-toml v1.8.1 // indirect
 	github.com/prometheus/client_golang v1.3.0
 	github.com/sirupsen/logrus v1.7.0
-	github.com/stevenroose/gonfig v0.1.4
+	github.com/stevenroose/gonfig v0.1.5
 	github.com/uber/jaeger-client-go v2.20.1+incompatible
 	github.com/uber/jaeger-lib v2.2.0+incompatible // indirect
 	go.mongodb.org/mongo-driver v1.7.2
