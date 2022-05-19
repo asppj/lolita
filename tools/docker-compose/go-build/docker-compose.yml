@@ -1,0 +1,15 @@
+version: "3"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: go-build-tools
+        privileged: true
+        volumes:
+            - .:/workspace
+        ports:
+            - 5000
+            - 50000
+        command:
+            sleep 13600
