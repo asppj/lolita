@@ -32,5 +32,9 @@ func TestPATCH4(t *testing.T) {
 }
 
 func TestPATCH5(t *testing.T) {
-    t.Log("测试用例patch5")
+	t.Log("测试用例patch5")
+}
+
+func TestPUT(t *testing.T) {
+	t.Log("测试用例put")
 }
