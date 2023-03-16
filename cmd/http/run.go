@@ -54,10 +54,8 @@ func GinInitServer() error {
 		panic(err)
 	}
 	_defaultServer = &http.Server{
-		Addr:         Host + ":" + Port,
-		Handler:      routerHandel,
-		ReadTimeout:  5000 * time.Second,
-		WriteTimeout: 10000 * time.Second,
+		Addr:    Host + ":" + Port,
+		Handler: routerHandel,
 	}
 	_defaultServer.RegisterOnShutdown(func() {
 		log.Printf("关闭http服务...%s:%s", Host, Port)
